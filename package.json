@@ -1,0 +1,30 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "Pruebas unitarias",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "sequelize",
+    "ORM",
+    "MySql",
+    "Express"
+  ],
+  "author": "Javier Tibaduisa",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0"
+  }
+}
