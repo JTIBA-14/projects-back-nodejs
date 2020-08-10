@@ -14,19 +14,11 @@ jobs:
             command: npm install
         - run:
             name: Running unit test
-            command: npm test
+            command: npm test 
 
-    docker:        
-        - run:
-            name: Docker databases
-            command: cd docker-mysql   
-        - run:
-            name: Docker databases
-            command: docker-compose up -d   
 
 
 workflows:
   build-and-deploy:
       jobs:
-        - docker
         - test

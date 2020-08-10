@@ -19,6 +19,9 @@ app.use( express.json() );
 app.use('/api/v1', router);
 
 
-app.listen( PORT, () => {
+const server = app.listen( PORT, () => {
     console.log(`Servicdor inicializado...`);
 });
+
+
+module.exports = server;

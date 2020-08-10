@@ -1,15 +1,18 @@
 const chai = require('chai');
-const app = require('./../src/index');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const assert = chai.assert;
+
+let server;
 
 chai.use( chaiHttp );
 
 const Projects = require('./../src/app/models/projects');
 
 describe('Resource Model - Projects', () => {
-
+    beforeEach(() => {
+        server = require('./../src/index');
+    })
 
     describe('Add a resorce to database', () => {
         const data = {
@@ -54,5 +57,9 @@ describe('Resource Model - Projects', () => {
             });
         })
     });
+
+    afterEach( () => {
+        server.close();
+    })
 
 });
