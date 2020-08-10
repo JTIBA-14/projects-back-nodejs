@@ -4,6 +4,10 @@ orbs:
     node: circleci/node@3.0.0
 
 jobs:
+    docker-jobs: 
+        - run: 
+            name: Running docker
+            command: docker-compose up -d
     test:
       docker:
         - image: circleci/node:14.4
@@ -21,4 +25,5 @@ jobs:
 workflows:
   build-and-deploy:
       jobs:
+        - docker-jobs
         - test
