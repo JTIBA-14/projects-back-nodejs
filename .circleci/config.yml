@@ -8,9 +8,9 @@ jobs:
       docker:
         - image: circleci/node:14.4
         - image: mysql 
-            command: --default-authentication-plugin=mysql_native_password
-            environment:
-                MYSQL_ROOT_PASSWORD: javier_mysql
+          command: --default-authentication-plugin=mysql_native_password
+          environment:
+            MYSQL_ROOT_PASSWORD: javier_mysql
       steps:
         - checkout
         - run:
