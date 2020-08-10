@@ -7,14 +7,12 @@ jobs:
     test:
       docker:
         - image: circleci/node:14.4
+        - image: mysql 
+            command: --default-authentication-plugin=mysql_native_password
+            environment:
+                MYSQL_ROOT_PASSWORD: javier_mysql
       steps:
         - checkout
-        - run:
-            name: docker version
-            command: docker --version
-        - run: 
-            name: Running docker
-            command: sudo docker-compose -f ./docker-mysql/docker-compose.yml up -d
         - run:
             name: install packages
             command: npm install
