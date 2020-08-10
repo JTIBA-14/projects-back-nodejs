@@ -44,7 +44,7 @@ describe('Resource Model - Projects', () => {
             }).catch((err) => {
                 if ( err.errors[0].message == 'Please provider a name') {
                     done();
-                } 
+                }
             });
         });
 

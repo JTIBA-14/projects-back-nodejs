@@ -39,7 +39,6 @@ class ProjectController {
     }
     
     async store( req, res ) {
-        console.log(req.body);
         try {
             const project = await Project.create( req.body, {
                 fields: Object.keys( req.body )

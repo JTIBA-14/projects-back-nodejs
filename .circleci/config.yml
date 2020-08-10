@@ -1,18 +1,24 @@
 version: 2.1
 
-orbs:
-    node: circleci/node@3.0.0
-
 jobs:
     test:
-      docker:
-        - image: circleci/node:14.4
-        - image: mysql 
-          command: --default-authentication-plugin=mysql_native_password
-          environment:
-            MYSQL_ROOT_PASSWORD: javier_mysql
+      machine:
+        image: ubuntu-1604:201903-01
+      working_directory: ~/project-nodejs
       steps:
         - checkout
+        - run:
+            name: Install Docker Compose
+            command: |
+              set -x
+              curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
+              sudo mv docker-compose /usr/local/bin/docker-compose
+              sudo chmod +x /usr/local/bin/docker-compose
+        - run: 
+            name: install dependencies and exec tests
+            command: |
+              echo "hola mundo"
+              docker-compose -f ./docker-mysql/docker-compose.yml up -d      
         - run:
             name: install packages
             command: npm install
