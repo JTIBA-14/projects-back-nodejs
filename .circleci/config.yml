@@ -23,9 +23,7 @@ jobs:
         - run: 
             name: install dependencies and exec tests
             command: docker-compose -f ./docker-mysql/docker-compose.yml up -d  
-    test:
-      steps:
-        - checkout                  
+                              
         - run:
             name: install packages
             command: |
@@ -41,5 +39,4 @@ jobs:
 workflows:
   build-and-deploy:
       jobs:
-        - config-environment
         - test
