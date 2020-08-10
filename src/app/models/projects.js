@@ -10,7 +10,8 @@ class Projects extends Sequelize.Model {
                         notEmpty: {
                             args: true,
                             msg: 'Please provider a name',
-                        }
+                        },
+                        
                     }
                 },
                 priority: Sequelize.INTEGER,

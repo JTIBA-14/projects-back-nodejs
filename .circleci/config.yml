@@ -17,7 +17,7 @@ jobs:
         - run: 
             name: install dependencies and exec tests
             command: |
-              echo "hola mundo"
+              node --version
               docker-compose -f ./docker-mysql/docker-compose.yml up -d      
         - run:
             name: install packages
