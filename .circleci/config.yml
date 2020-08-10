@@ -14,12 +14,16 @@ jobs:
               curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
               sudo mv docker-compose /usr/local/bin/docker-compose
               sudo chmod +x /usr/local/bin/docker-compose
+        - run:
+            name: Install Node js 
+            command: |
+              curl -sL https://deb.nodesource.com/setup_12.x | bash -
+              apt-get -y install nodejs  
         - run: 
             name: install dependencies and exec tests
             command: |
               node --version
               npm --version
-              sudo apt-get update
               docker-compose -f ./docker-mysql/docker-compose.yml up -d      
         - run:
             name: install packages
