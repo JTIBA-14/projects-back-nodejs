@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    test:
+    config-environment:
       machine:
         image: ubuntu-1604:201903-01
       working_directory: ~/project-nodejs
@@ -22,13 +22,16 @@ jobs:
               sudo npm install -g npm
         - run: 
             name: install dependencies and exec tests
+            command: docker-compose -f ./docker-mysql/docker-compose.yml up -d  
+    test:
+      steps:
+        - checkout                  
+        - run:
+            name: install packages
             command: |
               node --version
               npm --version
-              docker-compose -f ./docker-mysql/docker-compose.yml up -d      
-        - run:
-            name: install packages
-            command: npm install
+              npm install
         - run:
             name: Running unit test
             command: npm test 
@@ -38,4 +41,5 @@ jobs:
 workflows:
   build-and-deploy:
       jobs:
+        - config-environment
         - test
