@@ -18,6 +18,9 @@ jobs:
             name: install packages
             command: npm install
         - run:
+            name: sequelize-cil
+            command: sequelize db:migrate   
+        - run:
             name: Running unit test
             command: npm test 
 
