@@ -39,15 +39,19 @@ class ProjectController {
     }
     
     async store( req, res ) {
+        console.log(req.body);
         try {
-            const project = await Project.create( req.body );
+            const project = await Project.create( req.body, {
+                fields: Object.keys( req.body )
+            } );
             res.status(201).json({
                 message: 'Project created successfully!!',
                 data: project
             });
         } catch (error) {
             res.status(500).json({
-                message: 'Error internal server'
+                message: 'Error internal server',
+                error: error.errors
             });
         }
     }
