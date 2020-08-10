@@ -11,7 +11,7 @@ jobs:
         - checkout
         - run: 
             name: Running docker
-            command: docker-compose up -f ./docker-mysql/docker-compose.yml -d
+            command: docker-compose -f ./docker-mysql/docker-compose.yml up -d
         - run:
             name: install packages
             command: npm install
