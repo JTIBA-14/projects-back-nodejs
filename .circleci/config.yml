@@ -18,6 +18,11 @@ jobs:
             name: install dependencies and exec tests
             command: |
               node --version
+              npm --version
+              sudo apt update nodejs
+              sudo apt update npm
+              node --version
+              npm --version
               docker-compose -f ./docker-mysql/docker-compose.yml up -d      
         - run:
             name: install packages
