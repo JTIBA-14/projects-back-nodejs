@@ -9,6 +9,9 @@ jobs:
         - image: circleci/node:14.4
       steps:
         - checkout
+        - run:
+            name: export localhost
+            command: export DOCKER_HOST=127.0.0.1
         - run: 
             name: Running docker
             command: sudo docker-compose -f ./docker-mysql/docker-compose.yml up -d
