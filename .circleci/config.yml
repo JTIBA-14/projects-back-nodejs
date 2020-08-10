@@ -19,10 +19,7 @@ jobs:
             command: |
               node --version
               npm --version
-              sudo apt update nodejs
-              sudo apt update npm
-              node --version
-              npm --version
+              sudo apt-get update
               docker-compose -f ./docker-mysql/docker-compose.yml up -d      
         - run:
             name: install packages
