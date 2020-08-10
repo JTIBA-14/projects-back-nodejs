@@ -2,39 +2,20 @@ version: 2.1
 
 jobs:
     test:
-      machine:
-        image: ubuntu-1604:201903-01
-      working_directory: ~/project-nodejs
+      docker:
+        - image: circleci/node:14.4
+        - image: mysql 
+          command: --default-authentication-plugin=mysql_native_password
+          environment:
+            MYSQL_ROOT_PASSWORD: javier_mysql
       steps:
         - checkout
         - run:
-            name: Install Docker Compose
-            command: |
-              set -x
-              curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
-              sudo mv docker-compose /usr/local/bin/docker-compose
-              sudo chmod +x /usr/local/bin/docker-compose
-        - run:
-            name: Install Node js 
-            command: |
-              sudo apt-get purge --auto-remove nodejs
-              curl -sL https://deb.nodesource.com/setup_12.x | sudo bash - && \
-              sudo apt-get install -yq nodejs build-essential
-              sudo npm install -g npm
-        - run: 
-            name: install dependencies and exec tests
-            command: docker-compose -f ./docker-mysql/docker-compose.yml up -d  
-
-        - run:
             name: install packages
-            command: |
-              node --version
-              npm --version
-              npm install
+            command: npm install
         - run:
             name: Running unit test
             command: npm test 
-
 
 
 workflows:
