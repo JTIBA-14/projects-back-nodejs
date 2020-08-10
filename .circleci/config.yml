@@ -10,8 +10,8 @@ jobs:
       steps:
         - checkout
         - run:
-            name: export localhost
-            command: export DOCKER_HOST=127.0.0.1
+            name: docker version
+            command: docker --version
         - run: 
             name: Running docker
             command: sudo docker-compose -f ./docker-mysql/docker-compose.yml up -d
