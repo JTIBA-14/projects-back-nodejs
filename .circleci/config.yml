@@ -1,0 +1,32 @@
+version: 2.1
+
+orbs:
+    node: circleci/node@3.0.0
+
+jobs:
+    test:
+      docker:
+        - image: circleci/node:14.4
+        - image: mysql 
+          command: --default-authentication-plugin=mysql_native_password
+          environment:
+            MYSQL_ROOT_PASSWORD: javier_mysql
+            MYSQL_DATABASE: projects_node
+      steps:
+        - checkout
+        - run:
+            name: install packages
+            command: npm install
+        - run:
+            name: sequelize-cli
+            command: npx sequelize-cli db:migrate   
+        - run:
+            name: Running unit test
+            command: npm test 
+
+
+
+workflows:
+  build-and-deploy:
+      jobs:
+        - test
