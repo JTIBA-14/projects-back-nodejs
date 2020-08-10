@@ -17,8 +17,9 @@ jobs:
         - run:
             name: Install Node js 
             command: |
-              curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-              sudo apt-get install -y nodejs  
+              curl -sL https://deb.nodesource.com/setup_12.x | sudo bash - && \
+              sudo apt-get install -yq nodejs build-essential
+              sudo npm install -g npm
         - run: 
             name: install dependencies and exec tests
             command: |
