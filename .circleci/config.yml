@@ -7,7 +7,6 @@ jobs:
     test:
       docker:
         - image: circleci/node:12.18.3
-        #- image: mysql 
         - image: circleci/mysql:8.0.19
           command: --default-authentication-plugin=mysql_native_password
           environment:
