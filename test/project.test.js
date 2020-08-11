@@ -47,15 +47,6 @@ describe('Resource Model - Projects', () => {
                 }
             });
         });
-
-        afterEach(() => {
-            // Remove data after each unit testing case
-            Projects.destroy({
-                where: { name: data.name }
-            }).catch( (err) => {
-                console.log(err);
-            });
-        })
     });
 
     describe("Resorce fecthed by HTTP", () => {
