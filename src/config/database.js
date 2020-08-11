@@ -4,6 +4,7 @@ module.exports = {
     "database": "projects_node",
     "host": "localhost",
     "dialect": "mysql",
+    "logging": false,
     "define":{
       "timestamps": false,
       "underscored": true,
